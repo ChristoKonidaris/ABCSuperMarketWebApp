@@ -1,0 +1,55 @@
+﻿@model ABCSuperMarketWebApp.Models.Item
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<div>
+    <a href="@Url.Action("Get", "Home")">View Item Hub</a>
+</div>
+
+
+
+<div>
+    <h1>The item manager to add or edit items in the system.</h1>
+</div>
+<br />
+
+<div>
+    @using (Html.BeginForm("Index", "Home", new { id = Model.RowKey }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <fieldset>
+            <br />
+            <legend>Add Item</legend>
+            <div>
+                <div>
+                    <label>Item Name</label>
+                    <input type="text" name="ItemName" required="required" value="@Model.ItemName" />
+
+                </div>
+                <br />
+                <div>
+                    <label>Item Description</label>
+                    <input type="text" name="ItemDescription" required="required" value="@Model.ItemDescription" />
+
+                </div>
+                <br />
+                <div>
+                    <label>Item Price</label>
+                    <input type="number" step="0.01" name="ItemPrice" required="required" value="@Model.ItemPrice" />
+
+                </div>
+                <br />
+                <div>
+                    <label>Item Image</label>
+                    <input type="file" name="uploadFile" />
+                </div>
+            </div>
+            <br />
+            <input type="submit" value="Submit" />
+        </fieldset>
+    }
+</div>

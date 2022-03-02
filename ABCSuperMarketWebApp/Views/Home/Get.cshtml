@@ -1,0 +1,45 @@
+﻿@model List<ABCSuperMarketWebApp.Models.Item>
+
+<br />
+
+<div>
+    <a href="@Url.Action("Index", "Home")"> Add Item</a>
+</div>
+
+<div >
+    <h1>The item hub showing all of the products in the system.</h1>
+</div>
+<br />
+
+<div>
+    <div class=" row">
+
+        @foreach (ABCSuperMarketWebApp.Models.Item ItemObj in Model)
+        {
+
+            
+            <div class="col-lg-4">
+
+                <div class=" card">
+
+                    <div><img class="itemImage" src="@ItemObj.FilePath" alt="@ItemObj.FilePath" /></div>
+                    <br />
+                    <div>Item Name: @ItemObj.ItemName</div>
+                    <br />
+                    <div>Item Description: @ItemObj.ItemDescription</div>
+                    <br />
+                    <div>Item Price: R @ItemObj.ItemPrice</div>
+                    <br />
+                    <div>
+                        <span>Actions: @Html.ActionLink("Edit", "Index", "Home", new { id = ItemObj.RowKey }, new { })</span>
+                        <span>@Html.ActionLink("Delete", "Delete", "Home", new { id = ItemObj.RowKey }, new { onclick = "return confirm('Are you sure you wish to delete this item?');" })</span>
+                    </div>
+                </div>
+            </div>
+
+                }
+
+            </div>
+        
+
+</div>
